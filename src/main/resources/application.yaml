@@ -1,0 +1,8 @@
+server:
+  port: 29080
+  servlet:
+    context-path: /kafkatesttool
+#  ssl:
+#    key-store: classpath:cert/server.keystore
+#    key-alias: server
+#    key-store-password: xiaoxiong581

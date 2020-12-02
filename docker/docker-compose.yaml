@@ -1,0 +1,9 @@
+springboot:
+  image: xiaoxiong581/customermanager:0.0.1-snapshot
+  ports:
+  - "19080:19080"
+  - "19081:19081"
+  volumes:
+  - "/var/log/xiaoxiong581/CustomerManager:/var/log/xiaoxiong581/CustomerManager"
+  container_name: customermanager
+  restart: always

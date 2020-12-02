@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration status="WARN" monitorInterval="30">
+    <appenders>
+        <console name="Console" target="SYSTEM_OUT" follow="true">
+            <ThresholdFilter level="info" onMatch="ACCEPT" onMismatch="DENY"/>
+            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss:SSS}|%p|%t|%l|%m%n"/>
+        </console>
+
+        <RollingFile name="RollingFileRoot" fileName="/var/log/KafkaTestTool/root.log"
+                     filePattern="/var/log/KafkaTestTool/root-%i.log.gz">
+            <PatternLayout pattern="%d{yyyyMMddHHmmss}|2001234|%-level|%X{X-B3-TraceId}|%d{yyyy-MM-dd HH:mm:ss:SSS} %t %c{1} %L - %m%throwable{separator(##)}%n"/>
+            <Policies>
+                <SizeBasedTriggeringPolicy size="100MB"/>
+            </Policies>
+            <DefaultRolloverStrategy max="20"/>
+            <Filters>
+                <ThresholdFilter level="INFO" onMatch="ACCEPT" onMismatch="DENY"/>
+            </Filters>
+        </RollingFile>
+    </appenders>
+
+    <loggers>
+        <root level="info">
+            <appender-ref ref="RollingFileRoot"/>
+        </root>
+    </loggers>
+</configuration>
